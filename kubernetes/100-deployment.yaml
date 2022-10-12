@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: mark-powell-demo
+    app.kubernetes.io/part-of: app-mark-powell-demo
+  name: mark-powell-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mark-powell-demo
+      app.kubernetes.io/part-of: app-mark-powell-demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/name: mark-powell-demo
+        app.kubernetes.io/part-of: app-mark-powell-demo
+    spec:
+      containers:
+      - image: europe-west2-docker.pkg.dev/quick-yen-359707/poc/mark-powell-demo:latest
+        imagePullPolicy: Always
+        name: mark-powell-demo
+        ports:
+        - containerPort: 3001
+          protocol: TCP
+        resources: {}
+      serviceAccountName: default
+status: {}
